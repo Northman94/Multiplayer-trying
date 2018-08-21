@@ -11,6 +11,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1370839433251310}
   m_IsPrefabAsset: 1
+--- !u!1 &1017788181963406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4099031592085028}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1335099923897158
 GameObject:
   m_ObjectHideFlags: 1
@@ -40,6 +55,7 @@ GameObject:
   - component: {fileID: 65489784322074048}
   - component: {fileID: 54532331337789540}
   - component: {fileID: 114764098633818230}
+  - component: {fileID: 114224735052024402}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -81,6 +97,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4099031592085028
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017788181963406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.831, y: 0.369, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4745943601851022}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4566975498367916
 Transform:
   m_ObjectHideFlags: 1
@@ -115,11 +144,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1370839433251310}
   m_LocalRotation: {x: -0, y: 0.39297837, z: -0, w: 0.91954774}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.2309337, y: 0.42, z: 6.6693025}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4999117719163536}
   - {fileID: 4652618569568478}
+  - {fileID: 4099031592085028}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 46.280003, z: 0}
@@ -300,9 +330,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56be51f0facce401d8ab631275729572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _firePoint: {fileID: 4099031592085028}
+  _bulletPrefab: {fileID: 1760092355651248, guid: b1ee0693a57c84c0bb453e47a0219b2d,
+    type: 2}
   speedMove: 5
   speedRotate: 60
-  tank: {fileID: 54532331337789540}
+--- !u!114 &114224735052024402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1370839433251310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.05
+  m_SyncRotationAxis: 2
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114764098633818230
 MonoBehaviour:
   m_ObjectHideFlags: 1
