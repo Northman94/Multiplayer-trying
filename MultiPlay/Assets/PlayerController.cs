@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     [SerializeField]
     float speedMove = 5f;
@@ -12,8 +13,37 @@ public class PlayerController : MonoBehaviour
     public Rigidbody tank;
 
 
+    private void Start() // Окраска своего в зеленый, а врага в красный.
+    {
+        if (isLocalPlayer)
+        {
+            foreach (var r in GetComponentsInChildren<Renderer>())
+            {
+                r.material.color = Color.green;
+            }
+        }
+        else
+        {
+            foreach (var r in GetComponentsInChildren<Renderer>())
+            {
+                r.material.color = Color.red;
+            }
+        }
+     }
+
+
+
+
     void Update()
     {
+        // NetworkBehaviour
+        if (!isLocalPlayer)
+        {
+            return; // в такой способ не сможем управлять чужим игроком.
+        }
+
+
+        // Movement
         float vert = Input.GetAxis("Vertical");
         float horiz = Input.GetAxis("Horizontal");
 
