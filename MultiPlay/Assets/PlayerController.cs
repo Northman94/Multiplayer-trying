@@ -37,8 +37,6 @@ public class PlayerController : NetworkBehaviour
      }
 
 
-
-
     void Update()
     {
         // NetworkBehaviour
@@ -54,7 +52,7 @@ public class PlayerController : NetworkBehaviour
 
         if (vert != 0)
         {
-            transform.Translate(Vector3.right * vert * speedMove * Time.deltaTime);
+            transform.Translate(Vector3.forward * vert * speedMove * Time.deltaTime);
         }
 
         if (horiz != 0)
@@ -66,21 +64,18 @@ public class PlayerController : NetworkBehaviour
         // Fire()
         if(Input.GetMouseButtonDown(0))
         {
-            Fire();
+            CmdFire();
         }
 
     }
   
 
-
-
-
-    public void Fire( )
+    [Command]
+    public void CmdFire( )
     {
         var bullet = Instantiate(_bulletPrefab, _firePoint.position,  _firePoint.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10f;
 
-        Destroy(bullet, 2f);
+        NetworkServer.Spawn(bullet);
     }
-
 }
