@@ -14,7 +14,8 @@ public class PlayerController : NetworkBehaviour
     float speedMove = 5f;
     [SerializeField]
     float speedRotate = 60f;
-
+    [SerializeField]
+    private int bulletSpeed = 10;
   
 
 
@@ -74,7 +75,8 @@ public class PlayerController : NetworkBehaviour
     public void CmdFire( )
     {
         var bullet = Instantiate(_bulletPrefab, _firePoint.position,  _firePoint.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10f;
+
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
 
         NetworkServer.Spawn(bullet);
     }
