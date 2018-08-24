@@ -61,6 +61,5 @@ public class PlayerHealth : NetworkBehaviour
         CurrentHealth = MaxHealth;
         }
 
-    
 }
  
