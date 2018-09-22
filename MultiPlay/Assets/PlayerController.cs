@@ -70,7 +70,7 @@ public class PlayerController : NetworkBehaviour
 
     }
   
-
+    // Bullet creation
     [Command]
     public void CmdFire( )
     {
